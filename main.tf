@@ -74,7 +74,7 @@ resource "google_compute_backend_service" "default" {
   health_checks = ["${element(google_compute_http_health_check.default.*.self_link, count.index)}"]
 }
 
-resource "google_compute_http_health_check" "default" {
+resource "google_compute_https_health_check" "default" {
   project      = "${var.project}"
   count        = "${length(var.backend_params)}"
   name         = "${var.name}-backend-${count.index}"
